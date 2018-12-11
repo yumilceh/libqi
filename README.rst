@@ -6,6 +6,7 @@ Recipe
 -----------
 
 First you should uninstall install an old version of boost (which is compatible with libqi).
+
 .. code-block:: sh
 
   sudo apt-get --purge remove libboost-dev libboost-doc
