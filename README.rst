@@ -22,7 +22,7 @@ First you should uninstall install an old version of boost (which is compatible 
   ./b2 toolset=gcc cxxflags="-std=c++11"
   sudo ./b2 install
 
-Then continue with the instructions provided by softbank but using this repository. Notice that we modify only the parts of the code related to "google-mock",  we download gtest during the compilation of libqi. Any file to be build requiren gmock.h, first most invoke gtest.h.
+Then continue with the instructions provided by softbank but using this repository. Notice that we modify only the parts of the code related to "google-mock",  we download gtest during the compilation of libqi. Any file to be build requiring gmock.h, first must invoke gtest.h.
 
 .. code-block:: sh
 
@@ -35,7 +35,6 @@ Then continue with the instructions provided by softbank but using this reposito
   cmake .. -DQI_WITH_TESTS=OFF
   make
   make install DESTDIR=./output
-
 
 Links
 -----
