@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/juan/pepper_ws/libqi/BUILD/tests/CMakeFiles/gtest"
+		},
+		{
+			"file" : "/home/juan/pepper_ws/libqi/BUILD/tests/CMakeFiles/gtest.rule"
+		},
+		{
+			"file" : "/home/juan/pepper_ws/libqi/BUILD/tests/CMakeFiles/gtest-complete.rule"
+		},
+		{
+			"file" : "/home/juan/pepper_ws/libqi/BUILD/tests/gtest/src/gtest-stamp/gtest-install.rule"
+		},
+		{
+			"file" : "/home/juan/pepper_ws/libqi/BUILD/tests/gtest/src/gtest-stamp/gtest-mkdir.rule"
+		},
+		{
+			"file" : "/home/juan/pepper_ws/libqi/BUILD/tests/gtest/src/gtest-stamp/gtest-download.rule"
+		},
+		{
+			"file" : "/home/juan/pepper_ws/libqi/BUILD/tests/gtest/src/gtest-stamp/gtest-update.rule"
+		},
+		{
+			"file" : "/home/juan/pepper_ws/libqi/BUILD/tests/gtest/src/gtest-stamp/gtest-patch.rule"
+		},
+		{
+			"file" : "/home/juan/pepper_ws/libqi/BUILD/tests/gtest/src/gtest-stamp/gtest-configure.rule"
+		},
+		{
+			"file" : "/home/juan/pepper_ws/libqi/BUILD/tests/gtest/src/gtest-stamp/gtest-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"gtest"
+		],
+		"name" : "gtest"
+	}
+}

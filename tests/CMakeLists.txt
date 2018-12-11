@@ -1,0 +1,77 @@
+# we still have tests about deprecated stuff, we don't want warnings about that
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations")
+endif()
+
+# Enable ExternalProject CMake module
+include(ExternalProject)
+
+# Download and install GoogleTest
+ExternalProject_Add(
+    gtest
+    URL https://github.com/google/googletest/archive/release-1.8.0.zip 
+    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/gtest
+    # Disable install step
+    INSTALL_COMMAND ""
+)
+
+# Create a libgtest target to be used as a dependency by test programs
+add_library(libgtest IMPORTED STATIC GLOBAL)
+add_dependencies(libgtest gtest)
+
+# Set gtest properties
+ExternalProject_Get_Property(gtest source_dir binary_dir)
+set_target_properties(libgtest PROPERTIES
+    "IMPORTED_LOCATION" "${binary_dir}/libgtest.a"
+    "IMPORTED_LINK_INTERFACE_LIBRARIES" "${CMAKE_THREAD_LIBS_INIT}"
+#    "INTERFACE_INCLUDE_DIRECTORIES" "${source_dir}/include"
+)
+# I couldn't make it work with INTERFACE_INCLUDE_DIRECTORIES
+include_directories("${source_dir}/include")
+
+# Download and install GoogleMock
+ExternalProject_Add(
+    gmock
+    URL https://github.com/google/googletest/archive/release-1.8.0.zip 
+    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/gmock
+    # Disable install step
+    INSTALL_COMMAND ""
+)
+
+# Create a libgmock target to be used as a dependency by test programs
+add_library(libgmock IMPORTED STATIC GLOBAL)
+add_dependencies(libgmock gmock)
+
+# Set gmock properties
+ExternalProject_Get_Property(gmock source_dir binary_dir)
+set_target_properties(libgmock PROPERTIES
+    "IMPORTED_LOCATION" "${binary_dir}/libgmock.a"
+    "IMPORTED_LINK_INTERFACE_LIBRARIES" "${CMAKE_THREAD_LIBS_INIT}"
+#    "INTERFACE_INCLUDE_DIRECTORIES" "${source_dir}/include"
+)
+# I couldn't make it work with INTERFACE_INCLUDE_DIRECTORIES
+include_directories("${source_dir}/include")
+
+# Configuring unit tests for this project
+file(GLOB TEST_SRC *.cpp)
+
+
+include_directories("${PROJECT_SOURCE_DIR}")
+
+
+include_directories(".")
+qi_create_lib(qitestutils
+  STATIC NO_INSTALL
+  SRC
+    "qi/testutils/testutils.hpp"
+    "qi/testutils/testutils.cpp"
+    "qi/testutils/mockutils.hpp"
+  DEPENDS qi 
+)
+qi_stage_lib(qitestutils)
+
+add_subdirectory("qi")
+add_subdirectory("type")
+add_subdirectory("messaging")
+add_subdirectory("perf")
+add_subdirectory("ka")
