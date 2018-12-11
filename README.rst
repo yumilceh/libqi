@@ -5,9 +5,20 @@ For more information see: http://github.com/aldebaran/libqi
 Recipe
 -----------
 
-To compile libqi you need qibuild which give some cmake functions used
-in libqi's CMakeLists.txt.
+First you should uninstall install an old version of boost (which is compatible with libqi).
+.. code-block:: sh
+  sudo apt-get --purge remove libboost-dev libboost-doc
+  wget -O boost_1_56_0.tar.gz https://sourceforge.net/projects/boost/files/boost/1.56.0
+  tar xzvf boost_1_56_0.tar.gz
+  rm boost*.tar.gz
+  sudo apt-get update
+  sudo apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev libboost-all-dev
+  ./bootstrap.sh --prefix=/usr/
+  ./b2
+  sudo ./b2 install
 
+
+Then continue with the instructions provided by softbank but using this repository.
 .. code-block:: sh
 
   pip2 install --user qibuild
