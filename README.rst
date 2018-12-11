@@ -7,6 +7,7 @@ Recipe
 
 First you should uninstall install an old version of boost (which is compatible with libqi).
 .. code-block:: sh
+
   sudo apt-get --purge remove libboost-dev libboost-doc
   wget -O boost_1_56_0.tar.gz https://sourceforge.net/projects/boost/files/boost/1.56.0
   tar xzvf boost_1_56_0.tar.gz
@@ -16,7 +17,6 @@ First you should uninstall install an old version of boost (which is compatible 
   ./bootstrap.sh --prefix=/usr/
   ./b2
   sudo ./b2 install
-
 
 Then continue with the instructions provided by softbank but using this repository.
 .. code-block:: sh
